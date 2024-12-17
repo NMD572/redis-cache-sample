@@ -1,0 +1,5 @@
+package vn.com.nmd.simple_redis.repository;
+
+public interface UserRepository {
+
+}

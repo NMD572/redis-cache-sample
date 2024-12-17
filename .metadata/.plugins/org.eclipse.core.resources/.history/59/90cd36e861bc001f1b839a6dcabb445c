@@ -1,0 +1,84 @@
+spring:
+  jackson:
+    time-zone: Asia/Ho_Chi_Minh
+    default-property-inclusion: NON_NULL
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  ## PostgreSQL
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres
+    username: postgres.qqxjbcpqoadradyeahod
+    password: simpleredis
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      connection:
+        charset: utf8
+        useUnicode: true
+      ## Hibernate ddl auto (create, create-drop, validate, update)
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 15MB
+  sql:
+    init:
+      platform: postgres
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  cache:
+    type: redis
+    
+##paging default properties
+jwt:
+  secret: "63871jdsgda612@#68271"
+  durationHourTime: 4
+  refreshTokenDurationHourTime: 16
+aes:
+  secret: "263dfjsbu12mu756"
+interage-api:
+  secret: "dhsu879m90hywjwg"
+auth:
+  fine:
+    failLogin:
+      first: 5
+      second: 10
+      third: 15
+      fourth: 60
+paging:
+  default:
+    page: 0
+    size: 10
+    #logging: #xuất ra file log chứa các lỗi khi deploy
+    #level:
+    #org.springframeword.cache: error
+    #file:
+    #name: logs/tech-gear-api-error
+    #pattern:
+    #file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    #logback:
+    #rollingpolicy:
+    #clean-history-on-start: true
+    #max-file-size: 100MB
+    #max-history: 7
+##since version 2.3, Spring Boot hides the message field in the response to avoid leaking sensitive information; we can use this property with an always value to enable it
+server:
+  ##port: ${process.env.PORT}            #process.env.PORT ||
+  port: 9292
+  error:
+    include-message: always
+  ssl:
+    enabled: false
+    trust-store: classpath:truststore.keystore
+    trust-store-password: changeit
+    key-store: classpath:keystore.jks
+    key-store-password: changeit
