@@ -19,21 +19,21 @@ public class UserServiceImpl implements IUserService {
     private UserRepository userRepository;
 
 	@Override
-    @Cacheable(value = "users", key = "#id")		// get from cache
+    @Cacheable(value = "users", key = "#id")		// get user from cache by key = id
     public User getUserById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
 	@Override
     @Transactional(rollbackFor = Exception.class)
-    @CachePut(value = "users", key = "#user.id")	// add to cache
+    @CachePut(value = "users", key = "#user.id")	// add information to cache when create / update information to cache when update
     public User saveUser(User user) {
         return userRepository.save(user);
     }
 
 	@Override
     @Transactional(rollbackFor = Exception.class)
-    @CacheEvict(value = "users", key = "#id")		// remove from cache
+    @CacheEvict(value = "users", key = "#id")		// remove from cache when delete user
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
