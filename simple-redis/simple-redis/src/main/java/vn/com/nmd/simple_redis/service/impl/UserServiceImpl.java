@@ -29,7 +29,7 @@ public class UserServiceImpl implements IUserService {
 	// key can only use input value 
 	@Override
     @Transactional(rollbackFor = Exception.class)
-    @CachePut(value = "users", key = "#userResult.id")	// add information to cache when create / update information to cache when update
+    @CachePut(value = "users", key = "#user.id")	// add information to cache when create / update information to cache when update
     public User saveUser(User user) {
 		return userRepository.save(user);
     }
