@@ -6,4 +6,6 @@ public interface IUserService {
 	public User getUserById(Long id);
 	public User saveUser(User user);
 	public void deleteUser(Long id);
+	
+	public User updateCacheWhenUpdateUserInfor(User user);
 }

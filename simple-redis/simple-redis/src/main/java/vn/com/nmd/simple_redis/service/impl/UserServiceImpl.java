@@ -29,7 +29,7 @@ public class UserServiceImpl implements IUserService {
 	// key can only use input value 
 	@Override
     @Transactional(rollbackFor = Exception.class)
-    @CachePut(value = "users", key = "#user.id")	// add information to cache when create / update information to cache when update
+    @CachePut(value = "users", key = "#user.id")	// add/override information to cache when create / update data
     public User saveUser(User user) {
 		return userRepository.save(user);
     }
@@ -41,4 +41,16 @@ public class UserServiceImpl implements IUserService {
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
+
+	
+	/***
+	 * This function is used for update cache before updating user information (for prevent cache inconsistency)
+	 */
+	// key can only use input value 
+	@Override
+    @CachePut(value = "users", key = "#user.id")	// add information to cache when create / update information to cache when update
+    public User updateCacheWhenUpdateUserInfor(User user) {
+		return user;
+    }
+	
 }

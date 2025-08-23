@@ -9,8 +9,8 @@ spring:
   datasource:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres?prepareThreshold=0
-    username: postgres.qqxjbcpqoadradyeahod
-    password: simpleredis
+    username: postgres.atpmussdkjnjkwpbzzak
+    password: simpleredisweb
   jpa:
     database: POSTGRESQL
     hibernate:
@@ -35,6 +35,8 @@ spring:
     redis:
       host: localhost
       port: 6379
+      password: shsds172932
+      database: 0
   cache:
     type: redis
     

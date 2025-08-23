@@ -29,6 +29,10 @@ public class UserRest {
 
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
+    	if(user.getId()!=null) {
+    		// update cache before save to database
+    		userService.updateCacheWhenUpdateUserInfor(user);
+    	}
         User savedUser = userService.saveUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
     }
